@@ -1,4 +1,7 @@
 import React from "react";
+import google from "../../images/Google.png";
+import github from "../../images/Github.png";
+import { Link } from "react-router-dom";
 
 const LogIn = () => {
   return (
@@ -35,14 +38,23 @@ const LogIn = () => {
             <p className=" text-red-500 pb-2">Forget Password</p>
             <p>
               New here?{" "}
-              <span className=" text-red-500">Create a New Account</span>
+              <Link to="/signup" className=" text-red-500">
+                Create a New Account
+              </Link>
             </p>
           </div>
           <button class="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
             Log In
           </button>
-          <p class="text-xs text-gray-500 mt-3">Or, you may choose,</p>
-          <div></div>
+          <p class="text-xs text-gray-500 mt-4">Or, you may choose,</p>
+          <div className="flex flex-row gap-3 mt-4">
+            <div onClick="" className="hover:shadow-2xl rounded-xl">
+              <img className="w-[60px]" src={google} alt="" />
+            </div>
+            <div onClick="" className="hover:shadow-2xl rounded-xl">
+              <img className="w-[60px]" src={github} alt="" />
+            </div>
+          </div>
         </div>
       </div>
     </section>
