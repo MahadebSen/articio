@@ -12,38 +12,40 @@ const Navbar = ({ data }) => {
   };
 
   return (
-    <div className="flex items-center justify-between bg-[#283046] mx-6 my-5 rounded-md px-5 py-2">
-      <div>
-        <Link to="/">
-          <img className="w-[155px] rounded-md" src={logo} alt="" />
-        </Link>
-      </div>
+    <nav className=" bg-[#283046] mx-6 rounded-md">
+      <div className="flex items-center justify-between max-w-7xl mx-auto my-5  px-5 py-2">
+        <div>
+          <Link to="/">
+            <img className="w-[155px] rounded-md" src={logo} alt="" />
+          </Link>
+        </div>
 
-      <ul className="flex items-center text-white flex-row gap-8">
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-
-        {user ? (
-          <ul className="flex flex-row items-center gap-8">
-            <li>
-              <Link to="/drawing">Drawings</Link>
-            </li>
-            <li className="cursor-pointer" onClick={handleSignOut}>
-              Sign Out
-            </li>
-          </ul>
-        ) : (
+        <ul className="flex items-center text-white flex-row gap-8">
           <li>
-            <Link to="/login">Log in</Link>
+            <Link to="/">Home</Link>
           </li>
-        )}
 
-        <li>
-          <Link to="/about">About us</Link>
-        </li>
-      </ul>
-    </div>
+          {user ? (
+            <ul className="flex flex-row items-center gap-8">
+              <li>
+                <Link to="/dashboard">Dashboard</Link>
+              </li>
+              <li className="cursor-pointer" onClick={handleSignOut}>
+                Sign Out
+              </li>
+            </ul>
+          ) : (
+            <li>
+              <Link to="/login">Log in</Link>
+            </li>
+          )}
+
+          <li>
+            <Link to="/about">About us</Link>
+          </li>
+        </ul>
+      </div>
+    </nav>
   );
 };
 
