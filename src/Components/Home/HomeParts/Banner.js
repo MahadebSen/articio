@@ -10,7 +10,7 @@ const Banner = () => {
   };
 
   return (
-    <div className="flex flex-col-reverse md:flex-row items-center justify-center mx-10 my-12 md:my-20 gap-5">
+    <div className="flex flex-col-reverse lg:flex-row items-center justify-center mx-10 my-12 md:my-28 gap-5">
       <div className="text-left flex-1">
         <p className="font-semibold text-4xl mb-4">
           The Most Creative Art School That Can Develop Your Talent

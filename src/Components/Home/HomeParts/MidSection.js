@@ -5,11 +5,11 @@ import { FaCalendarAlt } from "react-icons/fa";
 
 const MidSection = () => {
   return (
-    <section className="my-12 mx-10">
-      <p className="text-center text-3xl mb-12">Events</p>
-      <div className="flex flex-col md:flex-row items-center justify-center gap-20">
-        <div className="flex-1 bg rounded-tl-3xl rounded-br-3xl">
-          <div className="h-[650px] md:w-auto"></div>
+    <section className="my-16 mx-10">
+      <p className="text-center text-3xl mb-20">Events</p>
+      <div className="flex flex-col lg:flex-row items-center justify-center gap-20">
+        <div className="flex-1 bg rounded-tl-3xl rounded-br-3xl lg:h-[650px]">
+          <div className=""></div>
         </div>
 
         <div className="flex-1 flex flex-col gap-8">
