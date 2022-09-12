@@ -1,15 +1,70 @@
 import React from "react";
 import google from "../../images/Google.png";
 import github from "../../images/Github.png";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import auth from "../../firebase.init";
+import {
+  useSignInWithEmailAndPassword,
+  useSignInWithGithub,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
+import Loading from "../Loading/Loading";
 
 const LogIn = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
+  // react-firebase-hooks
+  const [signInWithEmailAndPassword, user, loading, error] =
+    useSignInWithEmailAndPassword(auth);
+
+  const [signInWithGoogle, googleUser, googleLoading, googleError] =
+    useSignInWithGoogle(auth);
+
+  const [signInWithGithub, githubUser, githubLoading, githubError] =
+    useSignInWithGithub(auth);
+
+  // click handlers
   const handleLogin = (e) => {
     e.preventDefault();
     const email = e.target.email.value;
     const password = e.target.password.value;
-    console.log(email, password);
+    signInWithEmailAndPassword(email, password);
   };
+
+  const handleGoogle = () => {
+    signInWithGoogle();
+  };
+
+  const handleGithub = () => {
+    signInWithGithub();
+  };
+
+  // loading-part
+  if (loading || googleLoading || githubLoading) {
+    return <Loading></Loading>;
+  }
+
+  // redirect part
+  if (user || googleUser || githubUser) {
+    navigate(from, { replace: true });
+  }
+
+  // error messages
+  let errorMsg;
+  if (error) {
+    errorMsg = <p className="text-red-500 text-sm pb-2">{error.message}</p>;
+  } else if (googleError) {
+    errorMsg = (
+      <p className="text-red-500 text-sm pb-2">{googleError.message}</p>
+    );
+  } else if (githubError) {
+    errorMsg = (
+      <p className="text-red-500 text-sm pb-2">{githubError.message}</p>
+    );
+  }
+
   return (
     <section class="text-gray-600 body-font relative max-w-5xl mx-auto">
       <div class="container px-5 py-10 md:py-20 mx-auto flex sm:flex-nowrap flex-wrap">
@@ -45,6 +100,7 @@ const LogIn = () => {
               required
             />
           </div>
+          {errorMsg}
           <div class="text-xs text-gray-500 mb-4">
             <p className=" text-red-500 pb-2">Forget Password</p>
             <p>
@@ -59,10 +115,10 @@ const LogIn = () => {
           </button>
           <p class="text-xs text-gray-500 mt-4">Or, you may choose,</p>
           <div className="flex flex-row gap-3 mt-4">
-            <div onClick="" className="hover:shadow-2xl rounded-xl">
+            <div onClick={handleGoogle} className="hover:shadow-2xl rounded-xl">
               <img className="w-[60px]" src={google} alt="" />
             </div>
-            <div onClick="" className="hover:shadow-2xl rounded-xl">
+            <div onClick={handleGithub} className="hover:shadow-2xl rounded-xl">
               <img className="w-[60px]" src={github} alt="" />
             </div>
           </div>

@@ -14,7 +14,7 @@ import Loading from "../Loading/Loading";
 const SignUp = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.form?.pathname || "/";
+  const from = location.state?.from?.pathname || "/";
 
   // react-firebase-hooks
   const [createUserWithEmailAndPassword, user, loading, error] =
