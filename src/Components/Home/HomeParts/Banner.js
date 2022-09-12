@@ -6,7 +6,7 @@ const Banner = () => {
   const navigate = useNavigate();
 
   const handleCreateABlog = () => {
-    navigate("/createBlog");
+    navigate("/dashboard");
   };
 
   return (

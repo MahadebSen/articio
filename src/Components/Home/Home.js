@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+
 import Banner from "./HomeParts/Banner";
 import MidSection from "./HomeParts/MidSection";
 

@@ -4,10 +4,19 @@ import github from "../../images/Github.png";
 import { Link } from "react-router-dom";
 
 const LogIn = () => {
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    console.log(email, password);
+  };
   return (
     <section class="text-gray-600 body-font relative max-w-5xl mx-auto">
       <div class="container px-5 py-10 md:py-20 mx-auto flex sm:flex-nowrap flex-wrap">
-        <div class="md:w-1/2 lg:w-1/2 mx-auto  bg-white flex flex-col md:ml-auto w-full p-8 mt-8 md:mt-0 rounded-lg">
+        <form
+          onSubmit={handleLogin}
+          class="md:w-1/2 lg:w-1/2 mx-auto  bg-white flex flex-col md:ml-auto w-full p-8 mt-8 md:mt-0 rounded-lg"
+        >
           <h2 class="text-gray-900 text-3xl pb-5 font-medium title-font">
             Log In
           </h2>
@@ -21,6 +30,7 @@ const LogIn = () => {
               id="email"
               name="email"
               class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              required
             />
           </div>
           <div class="relative mb-4">
@@ -32,6 +42,7 @@ const LogIn = () => {
               id="password"
               name="password"
               class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-lg outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              required
             />
           </div>
           <div class="text-xs text-gray-500 mb-4">
@@ -55,7 +66,7 @@ const LogIn = () => {
               <img className="w-[60px]" src={github} alt="" />
             </div>
           </div>
-        </div>
+        </form>
       </div>
     </section>
   );
